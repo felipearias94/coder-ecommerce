@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
+import { colors } from '../theme/colors';
 
 export default function ListItem({ item, removeItem }) {
   return (
@@ -14,7 +15,7 @@ export default function ListItem({ item, removeItem }) {
             <Ionicons
               style={styles.button}
               name='trash'
-              size={20}
+              size={30}
               onPress={() => removeItem(item.id)}
             />
           </Pressable>
@@ -28,11 +29,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    height: 60,
+    backgroundColor: colors.lightBeige,
+    borderWidth: 1,
+    borderRadius: 5,
+    marginVertical: 5,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 13,
   },
   text: {
     fontSize: 18,
-  },
-  button: {
-    color: 'red',
   },
 });

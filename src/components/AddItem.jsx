@@ -24,17 +24,20 @@ const styles = StyleSheet.create({
   input: {
     padding: 5,
     fontSize: 18,
-    width: 180,
+    height: 60,
   },
   inputContainer: {
     marginTop: 20,
     borderColor: '#000000',
     borderWidth: 1,
+    borderRadius: 5,
+    width: '77%',
   },
   buttonContainer: {
     flexDirection: 'row',
     alignItems: 'baseline',
     marginBottom: 15,
+    alignItems: 'center',
   },
   button: {
     marginTop: 15,
