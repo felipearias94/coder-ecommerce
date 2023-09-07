@@ -3,7 +3,6 @@ import React from 'react';
 import { colors } from '../../theme/colors';
 
 const CategoryItem = ({ item }) => {
-  console.log(item);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{item.item}</Text>
@@ -16,7 +15,7 @@ export default CategoryItem;
 const styles = StyleSheet.create({
   container: {
     height: 60,
-    alignItems: 'center',
+    alignItems: 'center', 
     justifyContent: 'center',
     backgroundColor: colors.lightBeige,
     borderRadius: 10,

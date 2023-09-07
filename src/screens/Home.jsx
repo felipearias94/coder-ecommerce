@@ -1,24 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import Header from '../components/Header';
-import CategoriesList from '../components/categories/CategoriesList';
+import { View } from "react-native";
+import React from "react";
+import CategoriesList from "../components/categories/CategoriesList";
+import Products from "./Products";
 
 const Home = () => {
   return (
-    <>
-      <Header />
-      <View style={styles.container}>
-        <CategoriesList />
-      </View>
-    </>
+    <View>
+      <Products category={"smartphones"} />
+      {/* <CategoriesList /> */}
+    </View>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 13,
-  },
-});
