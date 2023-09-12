@@ -14,7 +14,7 @@ export default function ListItem({ item, removeItem }) {
           <Pressable>
             <Ionicons
               style={styles.button}
-              name='trash'
+              name='back'
               size={30}
               onPress={() => removeItem(item.id)}
             />

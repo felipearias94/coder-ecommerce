@@ -3,11 +3,10 @@ import React from "react";
 import CategoriesList from "../components/categories/CategoriesList";
 import Products from "./Products";
 
-const Home = () => {
+const Home = ({ setCategorySelected }) => {
   return (
     <View>
-      <Products category={"smartphones"} />
-      {/* <CategoriesList /> */}
+      <CategoriesList setCategorySelected={setCategorySelected} />
     </View>
   );
 };

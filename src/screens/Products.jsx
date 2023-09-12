@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { products } from "../data/products";
 import ProductItem from "../components/products/ProductItem";
@@ -6,14 +6,15 @@ import Header from "../components/shared/Header";
 import Search from "../components/shared/Search";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-const Products = ({ category }) => {
+const Products = ({ categorySelected, setCategorySelected }) => {
   const [categoryProd, setCategoryProd] = useState([]);
   const [search, setSearch] = useState(null);
 
   useEffect(() => {
     const productsByCategory = products.filter(
-      (prod) => prod.category === category
+      (prod) => prod.category === categorySelected
     );
     setCategoryProd(productsByCategory);
     if (search) {
@@ -22,11 +23,18 @@ const Products = ({ category }) => {
       );
       setCategoryProd(titleProduct);
     }
-  }, [category, search]);
+  }, [categorySelected, search]);
 
   return (
     <>
       <Header title="Productos" />
+      <Ionicons
+        style={styles.button}
+        name="arrow-back"
+        size={30}
+        onPress={() => setCategorySelected(null)}
+      />
+
       <Search textInput={search} setTextInput={setSearch} />
       <View style={styles.container}>
         {categoryProd.length === 0 ? (

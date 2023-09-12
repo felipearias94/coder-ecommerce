@@ -1,12 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { colors } from '../../theme/colors';
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { colors } from "../../theme/colors";
 
-const CategoryItem = ({ item }) => {
+const CategoryItem = ({ item, setCategorySelected }) => {
+
+  const handleSelectCategory = (category) => {
+    console.log("selected>>>>>", category);
+    setCategorySelected(category);
+  };
+  
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => handleSelectCategory(item.item)}
+      style={styles.container}
+    >
       <Text style={styles.text}>{item.item}</Text>
-    </View>
+    </Pressable>
   );
 };
 
@@ -15,8 +24,8 @@ export default CategoryItem;
 const styles = StyleSheet.create({
   container: {
     height: 60,
-    alignItems: 'center', 
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: colors.lightBeige,
     borderRadius: 10,
     borderWidth: 1,
