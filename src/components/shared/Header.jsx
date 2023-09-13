@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 25,
+    fontFamily: "Pacifico",
     marginVertical: 10,
     color: colors.black,
   },

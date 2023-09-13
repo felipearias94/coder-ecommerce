@@ -5,7 +5,6 @@ import { colors } from "../../theme/colors";
 const CategoryItem = ({ item, setCategorySelected }) => {
 
   const handleSelectCategory = (category) => {
-    console.log("selected>>>>>", category);
     setCategorySelected(category);
   };
   
@@ -34,5 +33,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
+    fontFamily: 'Bold'
   },
 });

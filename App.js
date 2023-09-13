@@ -1,13 +1,24 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native";
 import { colors } from "./src/theme/colors";
 import Home from "./src/screens/Home";
 import { useState } from "react";
 import Products from "./src/screens/Products";
+import { useFonts } from "expo-font";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Pacifico: require("./assets/fonts/Pacifico-Regular.ttf"),
+    Regular: require("./assets/fonts/NanumGothic-Regular.ttf"),
+    Bold: require("./assets/fonts/NanumGothic-Bold.ttf"),
+    ExtraBold: require("./assets/fonts/NanumGothic-ExtraBold.ttf"),
+  });
   const [categorySelected, setCategorySelected] = useState("");
-  console.log(categorySelected);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar backgroundColor={colors.heavyBlue} />
@@ -22,5 +33,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});
