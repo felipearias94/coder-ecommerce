@@ -3,11 +3,10 @@ import React from "react";
 import { colors } from "../../theme/colors";
 
 const CategoryItem = ({ item, setCategorySelected }) => {
-
   const handleSelectCategory = (category) => {
     setCategorySelected(category);
   };
-  
+
   return (
     <Pressable
       onPress={() => handleSelectCategory(item.item)}
@@ -22,6 +21,8 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 20,
+    marginVertical: 10,
     height: 60,
     alignItems: "center",
     justifyContent: "center",
@@ -33,6 +34,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontFamily: 'Bold'
+    fontFamily: "Bold",
   },
 });
