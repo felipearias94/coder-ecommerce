@@ -1,15 +1,18 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colors } from "../../theme/colors";
+import { useNavigation } from "@react-navigation/native";
 
-const CategoryItem = ({ item, setCategorySelected }) => {
-  const handleSelectCategory = (category) => {
-    setCategorySelected(category);
+const CategoryItem = ({ item }) => {
+  const navigation = useNavigation();
+
+  const handleNavigate = (item) => {
+    console.log(item);
   };
 
   return (
     <Pressable
-      onPress={() => handleSelectCategory(item.item)}
+      onPress={() => navigation.navigate("products", { category: item.item })}
       style={styles.container}
     >
       <Text style={styles.text}>{item.item}</Text>

@@ -1,12 +1,9 @@
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native";
 import { colors } from "./src/theme/colors";
-import Home from "./src/screens/Home";
 import { useState } from "react";
-import Products from "./src/screens/Products";
 import { useFonts } from "expo-font";
-import ProductDetails from "./src/screens/ProductDetails";
-import { products } from "./src/data/products";
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigation from "./src/navigation/RootNavigation";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -23,16 +20,9 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <StatusBar backgroundColor={colors.heavyBlue} />
-      {/* {categorySelected ? (
-        <Products
-          categorySelected={categorySelected}
-          setCategorySelected={setCategorySelected}
-        />
-      ) : (
-        <Home setCategorySelected={setCategorySelected} />
-      )} */}
-      <ProductDetails product={products[2]} />
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     </SafeAreaView>
   );
 }

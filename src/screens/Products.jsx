@@ -5,15 +5,18 @@ import ProductItem from "../components/products/ProductItem";
 import Header from "../components/shared/Header";
 import Search from "../components/shared/Search";
 import { MaterialIcons } from "@expo/vector-icons";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
+import IconButton from "../components/shared/IconButton";
 
-const Products = ({ categorySelected, setCategorySelected }) => {
+const Products = ({ categorySelected, route }) => {
+  const navigation = useNavigation();
+  const { category } = route.params;
   const [categoryProd, setCategoryProd] = useState([]);
   const [search, setSearch] = useState(null);
 
   useEffect(() => {
     const productsByCategory = products.filter(
-      (prod) => prod.category === categorySelected
+      (prod) => prod.category === category
     );
     setCategoryProd(productsByCategory);
     if (search) {
@@ -27,11 +30,9 @@ const Products = ({ categorySelected, setCategorySelected }) => {
   return (
     <>
       <Header title="Productos" />
-      <Ionicons
-        style={styles.button}
-        name="arrow-back"
-        size={30}
-        onPress={() => setCategorySelected(null)}
+      <IconButton
+        icon={"arrow-back"}
+        onPress={() => navigation.navigate("home")}
       />
 
       <Search textInput={search} setTextInput={setSearch} />

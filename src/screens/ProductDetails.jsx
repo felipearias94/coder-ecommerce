@@ -11,11 +11,16 @@ import { products } from "../data/products";
 import Header from "../components/shared/Header";
 import { colors } from "../theme/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
+import IconButton from "../components/shared/IconButton";
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({ route }) => {
+  const navigation = useNavigation();
+  const { product } = route.params;
   return (
     <>
       <Header title="Detalles" />
+      <IconButton icon={"arrow-back"} onPress={() => navigation.goBack()} />
       <ScrollView>
         <View style={styles.wrapper}>
           <View style={styles.imageContainer}>

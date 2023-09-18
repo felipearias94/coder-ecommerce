@@ -5,16 +5,14 @@ import { categories } from "../../data/categories";
 import { colors } from "../../theme/colors";
 import Header from "../shared/Header";
 
-const CategoriesList = ({ setCategorySelected }) => {
+const CategoriesList = () => {
   return (
     <View style={styles.container}>
       <Header title="Categorias" />
       <FlatList
         data={categories}
         keyExtractor={(key) => key}
-        renderItem={(item) => (
-          <CategoryItem item={item} setCategorySelected={setCategorySelected} />
-        )}
+        renderItem={(item) => <CategoryItem item={item} />}
       />
     </View>
   );
