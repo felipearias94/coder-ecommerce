@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigation from "./src/navigation/RootNavigation";
 import TabNavigation from "./src/navigation/TabNavigation";
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,17 +15,18 @@ export default function App() {
     Bold: require("./assets/fonts/NanumGothic-Bold.ttf"),
     ExtraBold: require("./assets/fonts/NanumGothic-ExtraBold.ttf"),
   });
-  const [categorySelected, setCategorySelected] = useState("");
 
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <NavigationContainer>
-        <TabNavigation />
-      </NavigationContainer>
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+        <NavigationContainer>
+          <TabNavigation />
+        </NavigationContainer>
+      </SafeAreaView>
+    </Provider>
   );
 }

@@ -2,19 +2,20 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colors } from "../../theme/colors";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { setCategoryPressed } from "../../redux/slices/homeSlice";
 
 const CategoryItem = ({ item }) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const handleNavigate = (item) => {
-    console.log(item);
+  const onPressCategory = (item) => {
+    dispatch(setCategoryPressed(item.item));
+    navigation.navigate("products");
   };
 
   return (
-    <Pressable
-      onPress={() => navigation.navigate("products", { category: item.item })}
-      style={styles.container}
-    >
+    <Pressable onPress={() => onPressCategory(item)} style={styles.container}>
       <Text style={styles.text}>{item.item}</Text>
     </Pressable>
   );

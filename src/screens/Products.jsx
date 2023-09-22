@@ -1,23 +1,23 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { products } from "../data/products";
 import ProductItem from "../components/products/ProductItem";
 import Header from "../components/shared/Header";
 import Search from "../components/shared/Search";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import IconButton from "../components/shared/IconButton";
+import { useSelector } from "react-redux";
 
-const Products = ({ categorySelected, route }) => {
+const Products = ({ categorySelected }) => {
+  const products = useSelector((state) => state.homeSlice.allProducts);
   const navigation = useNavigation();
-  const { category } = route.params;
   const [categoryProd, setCategoryProd] = useState([]);
   const [search, setSearch] = useState(null);
+  const productsByCategory = useSelector(
+    (state) => state.homeSlice.productsFilteredByCategory
+  );
 
   useEffect(() => {
-    const productsByCategory = products.filter(
-      (prod) => prod.category === category
-    );
     setCategoryProd(productsByCategory);
     if (search) {
       const titleProduct = categoryProd.filter((prod) =>

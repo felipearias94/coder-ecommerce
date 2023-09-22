@@ -1,11 +1,12 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import React from "react";
 import CategoryItem from "./CategoryItem";
-import { categories } from "../../data/categories";
-import { colors } from "../../theme/colors";
 import Header from "../shared/Header";
+import { useSelector } from "react-redux";
 
 const CategoriesList = () => {
+  const categories = useSelector((state) => state.homeSlice.allCategories);
+  
   return (
     <View style={styles.container}>
       <Header title="Categorias" />

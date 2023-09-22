@@ -3,22 +3,28 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  View,
   useWindowDimensions,
 } from "react-native";
 import React from "react";
 import { colors } from "../../theme/colors";
 import { useNavigation } from "@react-navigation/native";
-import IconButton from "../shared/IconButton";
+import { useDispatch } from "react-redux";
+import { setProductsSelected } from "../../redux/slices/homeSlice";
 
 const ProductItem = ({ item }) => {
   const { height, width } = useWindowDimensions();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const onProductSelection = (item) => {
+    dispatch(setProductsSelected(item));
+    navigation.navigate("productDetails");
+  };
 
   return (
     <Pressable
       style={styles.container}
-      onPress={() => navigation.navigate("productDetails", { product: item })}
+      onPress={() => onProductSelection(item)}
     >
       <Text style={width < 300 ? styles.minTitle : styles.title}>
         {item.title}

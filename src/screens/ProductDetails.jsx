@@ -7,16 +7,17 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { products } from "../data/products";
 import Header from "../components/shared/Header";
 import { colors } from "../theme/colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import IconButton from "../components/shared/IconButton";
+import { useSelector } from "react-redux";
 
-const ProductDetails = ({ route }) => {
+const ProductDetails = () => {
   const navigation = useNavigation();
-  const { product } = route.params;
+  const product = useSelector((state) => state.homeSlice.productSelected);
+
   return (
     <>
       <Header title="Detalles" />
