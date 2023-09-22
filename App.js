@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigation from "./src/navigation/RootNavigation";
+import TabNavigation from "./src/navigation/TabNavigation";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,7 +22,7 @@ export default function App() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <NavigationContainer>
-        <RootNavigation />
+        <TabNavigation />
       </NavigationContainer>
     </SafeAreaView>
   );
