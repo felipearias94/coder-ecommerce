@@ -1,13 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { categories } from "../../data/categories";
-import { products } from "../../data/products";
+import { createSlice } from '@reduxjs/toolkit';
+import { products } from '../../data/products';
 
 const homeSlice = createSlice({
-  name: "homeSlice",
+  name: 'homeSlice',
   initialState: {
-    allCategories: categories,
+    allCategories: [],
     allProducts: products,
-    categorySelected: "",
+    categorySelected: '',
     productsFilteredByCategory: [],
     productSelected: {},
   },
@@ -21,7 +20,6 @@ const homeSlice = createSlice({
     },
     setProductsSelected: (initialState, action) => {
       initialState.productSelected = action.payload;
-      console.log("STORE>>>>>", action.payload);
     },
   },
 });
