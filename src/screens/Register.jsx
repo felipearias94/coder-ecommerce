@@ -2,6 +2,8 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { firebaseAuth } from '../firebase/firebase_auth';
 
 const Register = () => {
   const navigation = useNavigation();
@@ -10,8 +12,19 @@ const Register = () => {
     password: null,
   });
 
-  const onCreateAccount = () => {
-    console.log(credentials);
+  const onCreateAccount = async () => {
+    try {
+      const response = await createUserWithEmailAndPassword(
+        firebaseAuth,
+        credentials.email,
+        credentials.password
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      navigation.navigate('login');
+    }
   };
 
   return (

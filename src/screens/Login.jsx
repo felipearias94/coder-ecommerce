@@ -2,16 +2,31 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseAuth } from '../firebase/firebase_auth';
+import { useDispatch } from 'react-redux';
+import { setIdToken, setUser } from '../redux/slices/authSlice';
 
 const Login = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
     email: null,
     password: null,
   });
 
-  const login = () => {
-    console.log(credentials);
+  const login = async () => {
+    try {
+      const response = await signInWithEmailAndPassword(
+        firebaseAuth,
+        credentials.email,
+        credentials.password
+      );
+      dispatch(setUser(response.user.email));
+      dispatch(setIdToken(response._tokenResponse.idToken));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -38,12 +53,13 @@ const Login = () => {
         <Pressable onPress={login} style={styles.button}>
           <Text style={styles.buttonText}>Iniciar sesión</Text>
         </Pressable>
-        <Text>
-          No tenes cuenta?
+
+        <View style={{ flexDirection: 'row', gap: 10 }}>
+          <Text>No tenes cuenta?</Text>
           <Pressable onPress={() => navigation.navigate('register')}>
-            <Text>Registrate!</Text>
+            <Text style={{ fontFamily: 'Bold' }}>Registrate!</Text>
           </Pressable>
-        </Text>
+        </View>
       </View>
     </View>
   );

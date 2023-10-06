@@ -5,31 +5,44 @@ import { colors } from "../theme/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../redux/slices/authSlice';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  onHandleLogOut = () => {
+    dispatch(clearUser());
+  };
   return (
     <>
-      <Header title="Perfil" />
+      <Header title='Perfil' />
       <View style={styles.wrapper}>
         <Image
           style={styles.image}
           source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
           }}
         />
         <Pressable style={styles.button}>
-          <AntDesign name="camerao" size={24} color="black" />
-          <Text style={{ fontFamily: "Bold", fontSize: 18 }}>Abrir Cámara</Text>
+          <AntDesign name='camerao' size={24} color='black' />
+          <Text style={{ fontFamily: 'Bold', fontSize: 18 }}>Abrir Cámara</Text>
         </Pressable>
         <Pressable style={styles.button}>
-          <FontAwesome name="photo" size={24} color="black" />
-          <Text style={{ fontFamily: "Bold", fontSize: 18 }}>
+          <FontAwesome name='photo' size={24} color='black' />
+          <Text style={{ fontFamily: 'Bold', fontSize: 18 }}>
             Abrir Galería
           </Text>
         </Pressable>
         <Pressable style={styles.button}>
-          <Feather name="map-pin" size={24} color="black" />
-          <Text style={{ fontFamily: "Bold", fontSize: 18 }}>Abrir Mapas</Text>
+          <Feather name='map-pin' size={24} color='black' />
+          <Text style={{ fontFamily: 'Bold', fontSize: 18 }}>Abrir Mapas</Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={onHandleLogOut}>
+          <Feather name='user-x' size={24} color='black' />
+          <Text style={{ fontFamily: 'Bold', fontSize: 18 }}>
+            Cerrar sesión
+          </Text>
         </Pressable>
       </View>
     </>
