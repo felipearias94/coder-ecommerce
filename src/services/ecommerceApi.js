@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl } from '../firebase/database/database';
+import { baseUrl } from '../firebase/database';
 
 export const ecommerceApi = createApi({
   reducerPath: 'ecommerceApi',
