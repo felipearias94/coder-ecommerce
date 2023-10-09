@@ -3,14 +3,11 @@ import React, { useEffect, useState } from "react";
 import ProductItem from "../components/products/ProductItem";
 import Header from "../components/shared/Header";
 import Search from "../components/shared/Search";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import IconButton from "../components/shared/IconButton";
+import { MaterialIcons } from '@expo/vector-icons';
 import { useSelector } from "react-redux";
 
 const Products = ({ categorySelected }) => {
   const products = useSelector((state) => state.homeSlice.allProducts);
-  const navigation = useNavigation();
   const [categoryProd, setCategoryProd] = useState([]);
   const [search, setSearch] = useState(null);
   const productsByCategory = useSelector(
@@ -29,17 +26,13 @@ const Products = ({ categorySelected }) => {
 
   return (
     <>
-      <Header title="Productos" />
-      <IconButton
-        icon={"arrow-back"}
-        onPress={() => navigation.navigate("home")}
-      />
+      <Header title='Productos' />
 
       <Search textInput={search} setTextInput={setSearch} />
       <View style={styles.container}>
         {categoryProd.length === 0 ? (
           <View style={styles.notFound}>
-            <MaterialIcons name="do-not-disturb-alt" size={40} color="black" />
+            <MaterialIcons name='do-not-disturb-alt' size={40} color='black' />
             <Text style={styles.notFoundText}>No se encontró el producto</Text>
           </View>
         ) : (

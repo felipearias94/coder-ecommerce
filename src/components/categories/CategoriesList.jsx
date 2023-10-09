@@ -9,7 +9,7 @@ const CategoriesList = () => {
 
   return (
     <View style={styles.container}>
-      <Header title='Categorias' />
+      <Header title='Categorias' showGoBack={false} />
       {isLoading ? (
         <View style={{ justifyContent: 'center', alignContent: 'center' }}>
           <ActivityIndicator size={'large'} />

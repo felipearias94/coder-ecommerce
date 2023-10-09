@@ -1,6 +1,7 @@
 import {
   ActivityIndicator,
   Image,
+  Linking,
   Pressable,
   StyleSheet,
   Text,
@@ -20,8 +21,10 @@ import {
   useGetImagesQuery,
   usePutImagesMutation,
 } from '../services/ecommerceApi';
+import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
+  const navigation = useNavigation();
   const defaulImage = 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
   const dispatch = useDispatch();
   const [location, setLocation] = useState(null);
@@ -66,13 +69,15 @@ const Profile = () => {
   const onOpenLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
 
-    if (!status.granted) {
+    if (status != 'granted') {
       alert('Permisos de ubicación denegado!');
+      Linking.openSettings();
       return;
     }
 
     const location = await Location.getCurrentPositionAsync({});
     setLocation(location);
+    navigation.navigate('mapLoc', { location });
   };
 
   const onHandleLogOut = () => {
@@ -81,7 +86,7 @@ const Profile = () => {
 
   return (
     <>
-      <Header title='Perfil' />
+      <Header title='Perfil' showGoBack={false} />
       <View style={styles.wrapper}>
         {isLoading ? (
           <ActivityIndicator size={'large'} />

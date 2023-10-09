@@ -8,6 +8,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
+import ConfigurationNav from './ConfigurationNav';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,15 +21,15 @@ const TabNavigation = () => {
         tabBarInactiveTintColor: colors.lightBeige,
         tabBarActiveTintColor: colors.lightBeige,
       }}
-      initialRouteName="rootNavigation"
+      initialRouteName='rootNavigation'
     >
       <Tab.Screen
-        name="rootNavigation"
+        name='rootNavigation'
         component={RootNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
             <FontAwesome
-              name="shopping-basket"
+              name='shopping-basket'
               size={24}
               color={focused ? colors.black : colors.mediumGray}
             />
@@ -36,12 +37,12 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="purchases"
+        name='purchases'
         component={Purchases}
         options={{
           tabBarIcon: ({ focused }) => (
             <Foundation
-              name="dollar"
+              name='dollar'
               size={30}
               color={focused ? colors.black : colors.mediumGray}
             />
@@ -49,12 +50,12 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="profile"
-        component={Profile}
+        name='configurations'
+        component={ConfigurationNav}
         options={{
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name="person-circle-outline"
+              name='person-circle-outline'
               size={24}
               color={focused ? colors.black : colors.mediumGray}
             />

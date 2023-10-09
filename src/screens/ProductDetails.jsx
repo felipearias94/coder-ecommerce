@@ -9,24 +9,20 @@ import {
 import React from "react";
 import Header from "../components/shared/Header";
 import { colors } from "../theme/colors";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from "@react-navigation/native";
-import IconButton from "../components/shared/IconButton";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSelector } from "react-redux";
 
 const ProductDetails = () => {
-  const navigation = useNavigation();
   const product = useSelector((state) => state.homeSlice.productSelected);
 
   return (
     <>
-      <Header title="Detalles" />
-      <IconButton icon={"arrow-back"} onPress={() => navigation.goBack()} />
+      <Header title='Detalles' />
       <ScrollView>
         <View style={styles.wrapper}>
           <View style={styles.imageContainer}>
             <Image
-              resizeMode="cover"
+              resizeMode='cover'
               source={{ uri: product.thumbnail }}
               style={styles.image}
             />
@@ -40,7 +36,7 @@ const ProductDetails = () => {
             <Text style={styles.buttonTitle}>Agregar al carrito</Text>
           </Pressable>
           <Text style={styles.productRating}>
-            <Ionicons style={styles.productRating} name="md-star" size={30} />
+            <Ionicons style={styles.productRating} name='md-star' size={30} />
             {`Rating: ${product.rating}`}
           </Text>
         </View>
