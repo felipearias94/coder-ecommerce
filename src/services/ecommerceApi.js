@@ -13,8 +13,24 @@ export const ecommerceApi = createApi({
     getProductsByCategory: build.query({
       query: (category) => `products?category=${category}`,
     }),
+
+    getImages: build.query({
+      query: () => 'image.json',
+    }),
+
+    putImages: build.mutation({
+      query: (image) => ({
+        url: 'image.json',
+        method: 'PUT',
+        body: image,
+      }),
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductsByCategoryQuery } =
-  ecommerceApi;
+export const {
+  useGetCategoriesQuery,
+  useGetProductsByCategoryQuery,
+  usePutImagesMutation,
+  useGetImagesQuery,
+} = ecommerceApi;

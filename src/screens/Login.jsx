@@ -37,6 +37,7 @@ const Login = () => {
           placeholder='Correo electrónico'
           style={styles.input}
           value={credentials.email}
+          keyboardType='email-address'
           onChangeText={(value) =>
             setCredentials({ ...credentials, email: value })
           }
