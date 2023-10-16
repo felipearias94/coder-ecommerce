@@ -1,5 +1,6 @@
 import {
   ActivityIndicator,
+  Alert,
   Image,
   Linking,
   Pressable,
@@ -80,8 +81,23 @@ const Profile = () => {
     navigation.navigate('mapLoc', { location });
   };
 
-  const onHandleLogOut = () => {
+  const onLogout = () => {
     dispatch(clearUser());
+    navigation.navigate('login');
+  };
+
+  const onHandleLogOut = () => {
+    Alert.alert('Cerrar sesión', 'Estás seguro de cerrar sesión?', [
+      {
+        text: 'Cancelar',
+        style: 'cancel',
+      },
+      {
+        text: 'Sí',
+        onPress: () => onLogout(),
+        style: 'destructive',
+      },
+    ]);
   };
 
   return (

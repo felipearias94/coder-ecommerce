@@ -21,7 +21,7 @@ const MainNav = () => {
       }
     };
     checkUser();
-  }, []);
+  }, [user]);
   return (
     <NavigationContainer>
       {checkedUser ? <TabNavigation /> : <AuthNav />}
