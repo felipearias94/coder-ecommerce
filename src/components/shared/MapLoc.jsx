@@ -5,7 +5,7 @@ import MapView from 'react-native-maps';
 
 const MapLoc = ({ route }) => {
   const { location } = route.params;
-  console.log(JSON.stringify(location));
+
   return (
     <>
       <Header title='Ubicación' />

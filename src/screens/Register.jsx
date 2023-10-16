@@ -19,7 +19,6 @@ const Register = () => {
         credentials.email,
         credentials.password
       );
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
