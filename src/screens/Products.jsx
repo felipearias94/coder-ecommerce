@@ -1,21 +1,20 @@
-import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import { products } from "../data/products";
 import ProductItem from "../components/products/ProductItem";
 import Header from "../components/shared/Header";
 import Search from "../components/shared/Search";
-import { MaterialIcons } from "@expo/vector-icons";
-import { colors } from "../theme/colors";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { MaterialIcons } from '@expo/vector-icons';
+import { useSelector } from "react-redux";
 
-const Products = ({ categorySelected, setCategorySelected }) => {
+const Products = ({ categorySelected }) => {
+  const products = useSelector((state) => state.homeSlice.allProducts);
   const [categoryProd, setCategoryProd] = useState([]);
   const [search, setSearch] = useState(null);
+  const productsByCategory = useSelector(
+    (state) => state.homeSlice.productsFilteredByCategory
+  );
 
   useEffect(() => {
-    const productsByCategory = products.filter(
-      (prod) => prod.category === categorySelected
-    );
     setCategoryProd(productsByCategory);
     if (search) {
       const titleProduct = categoryProd.filter((prod) =>
@@ -27,19 +26,13 @@ const Products = ({ categorySelected, setCategorySelected }) => {
 
   return (
     <>
-      <Header title="Productos" />
-      <Ionicons
-        style={styles.button}
-        name="arrow-back"
-        size={30}
-        onPress={() => setCategorySelected(null)}
-      />
+      <Header title='Productos' />
 
       <Search textInput={search} setTextInput={setSearch} />
       <View style={styles.container}>
         {categoryProd.length === 0 ? (
           <View style={styles.notFound}>
-            <MaterialIcons name="do-not-disturb-alt" size={40} color="black" />
+            <MaterialIcons name='do-not-disturb-alt' size={40} color='black' />
             <Text style={styles.notFoundText}>No se encontró el producto</Text>
           </View>
         ) : (

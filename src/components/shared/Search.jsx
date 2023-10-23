@@ -8,8 +8,6 @@ const Search = ({ textInput, setTextInput, isLoading = false }) => {
     <SearchBar
       platform="android"
       containerStyle={styles.input}
-      inputContainerStyle={styles.input}
-      inputStyle={styles.input}
       onChangeText={setTextInput}
       placeholder="Buscar..."
       placeholderTextColor={colors.black}
@@ -24,7 +22,11 @@ export default Search;
 
 const styles = StyleSheet.create({
   input: {
+    marginHorizontal: 20,
+    marginVertical: 15,
+    borderRadius: 10,
     backgroundColor: colors.white,
-    borderWidth: 0,
+    borderWidth: 1,
+    borderColor: colors.black,
   },
 });

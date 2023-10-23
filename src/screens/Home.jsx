@@ -1,12 +1,11 @@
 import { View } from "react-native";
 import React from "react";
 import CategoriesList from "../components/categories/CategoriesList";
-import Products from "./Products";
 
-const Home = ({ setCategorySelected }) => {
+const Home = () => {
   return (
     <View>
-      <CategoriesList setCategorySelected={setCategorySelected} />
+      <CategoriesList />
     </View>
   );
 };
